@@ -7,8 +7,12 @@ TESTS=mem_writer mem_reader
 all: ${TESTS}
 
 ${TESTS}: posixmem_lib.c posixmem_lib.h mem_writer.c
-        ${CC} ${CFLAGS} posixmem_lib.c $@.c -o $@ ${LIBS}
+	${CC} ${CFLAGS} posixmem_lib.c $@.c -o $@ ${LIBS}
 
 clean:
-        rm -f ${TESTS}
+	rm -f ${TESTS}
+
+run: all
+	./mem_writer
+	./mem_reader
 
